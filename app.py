@@ -22,7 +22,11 @@ def delete_data():
 
 @app.route('/user', methods=['PUT'])
 def put_data():
-    return jsonify({'payload':'success'})
+    
+    if request.method == 'PUT':
+        return jsonify({'payload':'success', 'error' : False}), 200
+    else:
+        return jsonify({'error' : 'metodo no aceptado'}), 405
 
 
 @app.route('/api/v1/users', methods=['GET'])
